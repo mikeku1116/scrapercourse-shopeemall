@@ -6,10 +6,12 @@ import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import pandas as pd
 
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
+result = []
 for page in range(1, 3):
 
     driver.get(
@@ -41,7 +43,6 @@ for page in range(1, 3):
 
     # print(items)
 
-    result = []
     for item in items:
         driver.get(item[2])
 
@@ -55,5 +56,8 @@ for page in range(1, 3):
             result.append((item[0], item[1], comment.text))
         break
 
-    print(f"第{page}頁")
-    print(result)
+    # print(f"第{page}頁")
+    # print(result)
+
+data = pd.DataFrame(result, columns=['title', 'price', 'comment'])
+print(data)
