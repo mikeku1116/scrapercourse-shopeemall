@@ -131,3 +131,5 @@ dmypy.json
 shopeemall.csv
 
 shopeemall.xlsx
+
+shopeemall-bigquery-key.json
