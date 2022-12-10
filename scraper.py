@@ -21,7 +21,7 @@ for page in range(1, 3):
     ActionChains(driver).move_by_offset(100, 100).click().perform()
 
     locator = (By.CSS_SELECTOR,
-               "div[class='col-xs-2 recommend-products-by-view__item-card-wrapper']")
+               "div[class='_7EdMhC']")
 
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located(locator),
@@ -29,7 +29,7 @@ for page in range(1, 3):
     )
 
     cards = driver.find_elements(
-        By.CSS_SELECTOR, "div[class='col-xs-2 recommend-products-by-view__item-card-wrapper']")
+        By.CSS_SELECTOR, "div[class='_7EdMhC']")
 
     items = []
     for card in cards:
@@ -52,7 +52,7 @@ for page in range(1, 3):
                 "window.scrollTo(0, document.body.scrollHeight)")
             time.sleep(3)
 
-        comments = driver.find_elements(By.CSS_SELECTOR, "div[class='Em3Qhp']")
+        comments = driver.find_elements(By.CSS_SELECTOR, "div[class='EXI9SU']")
         for comment in comments:
             result.append((item[0], item[1], comment.text))
         break
@@ -88,4 +88,4 @@ emoji_pattern = re.compile(
 
 data['comment'] = data['comment'].str.replace(emoji_pattern, '')
 
-print(data)
+data.to_csv('shopeemall.csv')
